@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  redis-server:
+    image: 'redis' #This image is just the default redis container
+  node-app:
+    restart: always
+    build: . #Look in current directory for Dockerfile to define this image
+    ports:
+      - "4001:8081"
