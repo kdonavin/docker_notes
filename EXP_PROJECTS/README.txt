@@ -1,1 +1,1 @@
-These example projects are only slight alterations on practice projects provided as part of the "Docker and Kubernetes: The Complete Guide" course on Udemy by Stehpen Grinder.
+These example projects are only slight alterations on practice projects provided as part of the "Docker and Kubernetes: The Complete Guide" course on Udemy by Stehpen Grinder. Course located here: https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/
