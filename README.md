@@ -91,10 +91,11 @@ Simply executing `docker` will bring up abbreviated help. `docker <CMD> --help` 
  A command that has many important options.
 - `docker run [-aitp] <image> <cmd>` - make and start a container from an image. If the image is not in the local cache, it will be sought in the Docker hub, or other specified repository. Equivalent to running `docker create` + `docker start`.  Override default startup commends with `cmd`. E.g., `docker run busybox ls`.
 	- `-a` tells docker to _attach_ any output from the container to the terminal window. **Note**: The default command for the pre-existing container _cannot_ be replaced here.
+ 	- `-e`: Set environmental variable in docker env.
 	- `-i`  triggers interactive mode, and 
 	- `-t` attaches the terminal inside the container to the current terminal.
 	- `-p [XXXX:YYYY]`: Route incoming requests on port `XXXX` to this `YYYY` port inside the container.
-  - `-v`: Volumes option. Creates alias links from the container to files outside in the host machine. E.g., `-v $(pwd):/app` maps all files in the current working directory as volumes attached to `/app`. **Note:** if any other files are previously installed in the `/app` main directory, they will be overwritten with the volume command. If a directory should be preserved, the user can "bookmark" it with `-v /app/dir_to_bookmark` without a colon. 
+	- `-v`: Volumes option. Creates alias links from the container to files outside in the host machine. E.g., `-v $(pwd):/app` maps all files in the current working directory as volumes attached to `/app`. **Note:** if any other files are previously installed in the `/app` main directory, they will be overwritten with the volume command. If a directory should be preserved, the user can "bookmark" it with `-v /app/dir_to_bookmark` without a colon.
 
 ### Other Commands
 
