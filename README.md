@@ -74,6 +74,7 @@ The `Dockerfile` has the following flow:
 - `CMD`: Default command that is run if not overwritten in the `run/start` command. **Note**: this command is _not_ run at time of image creation, but rather at time of container `start`.
 - `ENV <name> <value>`: Set environment variable `name` to `value`.
     Use for permanent values in the Docker environment.
+- `EXPOSE` <port_num>: Used by web services to open ports. Otherwise, inactive but could be used as a note to devs for which port to expose in the `run` command. 
 - `FROM <container-name>` - define container type as pre-built `container-name`, searchable on DockerHub or locally built image. Docker will check for images already downloaded first, then download if the image is missing. The `FROM` source may be tagged with `AS` command
 - `MAINTAINER` <who>: `who` is responsible for this application
 - `RUN <cmd>`: Execute `cmd`  within the `FROM` environment. **Note**: Docker will create a temporary container (out of the `FROM` image) to execute these commands as their own `CMD`s. Then shut that container down and deletes it.
