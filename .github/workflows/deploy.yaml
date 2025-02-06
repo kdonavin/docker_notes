@@ -21,9 +21,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: Docker React EB
-          environment_name: DockerReactEB-env
-          existing_bucket_name: elasticbeanstalk-us-west-1-903101859757
-          region: us-west-1
+          application_name: frontend
+          environment_name: Frontend-env
+          existing_bucket_name: elasticbeanstalk-us-east-2-774301074798
+          region: us-east-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
