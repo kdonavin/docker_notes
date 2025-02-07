@@ -143,4 +143,29 @@ Examples where `restarts` are important to consider are a web-server (`always` r
 
 ## Docker Prod Workflows
 
-- **Travis CI**: testing tool to be run on a master branch of a code-base before it is integrated (automatically) with the dockerhost. su
+- **Travis CI**: testing tool to be run on a master branch of a code-base before it is integrated (automatically) with the dockerhost.
+
+### GitHub Actions
+
+A Continuous Integration/Continuous Deployment workflow tool built into GitHub. GitHub Actions uses YAML files to define workflows, which are automated processes that run one or more jobs. These jobs are sets of steps that execute on the same runner, which is a virtual machine. GitHub Actions revolves around 4 main concepts: 
+
+1. _triggers_ (when to run)
+2. _jobs_ (what to do)
+3. _steps_ (how to do it)
+4. _actions_ (reusable units of code)
+
+#### Folder Structure
+
+```
+project-root/
+├── .github/
+│   └── workflows/
+│       └── main.yml
+└── (rest of your project files)
+```
+
+The `.github/workflows` directory in your repository root is where you place your workflow files.
+
+### AWS
+
+- The Elastic Beanstalk application is great for app development because it _automatically_ scales up VMs runnng Dockers with our container inside as request load increases.
