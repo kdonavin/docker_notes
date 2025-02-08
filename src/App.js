@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload. Like this!: "I was changed!"
+          Edit <code>src/App.js</code> and save to reload. Like this!: "I was changed, this time on _this_ branch!"
         </p>
         <a
           className="App-link"
