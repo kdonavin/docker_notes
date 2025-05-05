@@ -87,23 +87,23 @@ Docker will `cache` images in between `FROM`/`RUN`/`CMD` steps, and will load th
 
 Simply executing `docker` will bring up abbreviated help. `docker <CMD> --help` brings up specific docker help.
 
-### Docker `run`
- 
- A command that has many important options.
-- `docker run [-aitp] <image> <cmd>` - make and start a container from an image. If the image is not in the local cache, it will be sought in the Docker hub, or other specified repository. Equivalent to running `docker create` + `docker start`.  Override default startup commends with `cmd`. E.g., `docker run busybox ls`.
+### Image Commands
+
+- `docker build <path>`: Build the application found at `path` with enclosed `Dockerfile`. 
+  - The `-t <docker_id>/<project/repo_name>:<version_num>` option tags the resulting image for convenient use. For example, `docker build -t kdonavin/ostk_proj:latest`
+  - The `-f` specifies the location/name of the `Dockerfile`. Useful for testing a dev `Dockerfile.dev`
+- `docker commit [-c <CMD>] <container_id>`: Manually create an image from a container that any has any number of modifications. `-c` option overrides the default command with a new `CMD`.
+- `docker system prune` - clean out stopped containers, "dangling" images, "dangling" build caches, and unused networks. Note that this will require redownload of images from Docker Hub if they are needed again. Good practice to run this command whenever the user is finished with a task requiring docker Docker as containers and images take up disk space.
+
+### Container Commands
+
+- `docker run [-aitp] <image> <cmd>` - (very important cmd) make and start a container from an image. If the image is not in the local cache, it will be sought in the Docker hub, or other specified repository. Equivalent to running `docker create` + `docker start`.  Override default startup commends with `cmd`. E.g., `docker run busybox ls`.
 	- `-a` tells docker to _attach_ any output from the container to the terminal window. **Note**: The default command for the pre-existing container _cannot_ be replaced here.
  	- `-e`: Set environmental variable in docker env.
 	- `-i`  triggers interactive mode, and 
 	- `-t` attaches the terminal inside the container to the current terminal.
 	- `-p [XXXX:YYYY]`: Route incoming requests on port `XXXX` to this `YYYY` port inside the container.
 	- `-v`: Volumes option. Creates alias links from the container to files outside in the host machine. E.g., `-v $(pwd):/app` maps all files in the current working directory as volumes attached to `/app`. **Note:** if any other files are previously installed in the `/app` main directory, they will be overwritten with the volume command. If a directory should be preserved, the user can "bookmark" it with `-v /app/dir_to_bookmark` without a colon.
-
-### Other Commands
-
-- `docker build <path>`: Build the application found at `path` with enclosed `Dockerfile`. 
-  - The `-t <docker_id>/<project/repo_name>:<version_num>` option tags the resulting image for convenient use. For example, `docker build -t kdonavin/ostk_proj:latest`
-  - The `-f` specifies the location/name of the `Dockerfile`. Useful for testing a dev `Dockerfile.dev`
-- `docker commit [-c <CMD>] <container_id>`: Manually create an image from a container that any has any number of modifications. `-c` option overrides the default command with a new `CMD`.
 - `docker cp <file> container_name:/path/to/somewhere` - copy `file`  to `container_name` in a given path
 - `docker create`: Create a docker container
 - `docker exec [-it] <containerID> <cmd>`: Execute `cmd` within a running container. `-i` allows interactive mode, and `-t` attaches the current terminal to the VM's terminal. Without the attached terminal, the `STDIN`/`STDOUT` will still be sent forth and back but without the features of a terminal interface (e.g., auto-complete). To access a generic terminal shell, use `sh/bash/zsh` for the command.
@@ -112,7 +112,6 @@ Simply executing `docker` will bring up abbreviated help. `docker <CMD> --help` 
 - `docker rm <name | id>` - Removes a container
 - `docker start [-a] <name | id>` - Start a pre-existing container (preferable to run, which creates a new container first). 
 - `docker stop/kill <name | id>` - Stop container `name`/`id`.  `stop` uses the  command `SIGTERM` (terminate signal) command, allowing container process cleanup (i.e., similar to `CTRL-C`). Stop automatically transitions to `kill` after 10 seconds, which rather sends the `SIGKILL` process command.
-- `docker system prune` - clean out stopped containers, "dangling" images, "dangling" build caches, and unused networks. Note that this will require redownload of images from Docker Hub if they are needed again. Good practice to run this command whenever the user is finished with a task requiring docker Docker as containers and images take up disk space.
 
 ## Docker Compose
 
