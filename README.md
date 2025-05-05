@@ -93,7 +93,7 @@ Simply executing `docker` will bring up abbreviated help. `docker <CMD> --help` 
   - The `-t <docker_id>/<project/repo_name>:<version_num>` option tags the resulting image for convenient use. For example, `docker build -t kdonavin/ostk_proj:latest`
   - The `-f` specifies the location/name of the `Dockerfile`. Useful for testing a dev `Dockerfile.dev`
 - `docker commit [-c <CMD>] <container_id>`: Manually create an image from a container that any has any number of modifications. `-c` option overrides the default command with a new `CMD`.
-- `docker system prune` - clean out stopped containers, "dangling" images, "dangling" build caches, and unused networks. Note that this will require redownload of images from Docker Hub if they are needed again. Good practice to run this command whenever the user is finished with a task requiring docker Docker as containers and images take up disk space.
+- `docker images`: Show a table of downloaded images
 
 ### Container Commands
 
@@ -112,6 +112,10 @@ Simply executing `docker` will bring up abbreviated help. `docker <CMD> --help` 
 - `docker rm <name | id>` - Removes a container
 - `docker start [-a] <name | id>` - Start a pre-existing container (preferable to run, which creates a new container first). 
 - `docker stop/kill <name | id>` - Stop container `name`/`id`.  `stop` uses the  command `SIGTERM` (terminate signal) command, allowing container process cleanup (i.e., similar to `CTRL-C`). Stop automatically transitions to `kill` after 10 seconds, which rather sends the `SIGKILL` process command.
+
+### Other Commands
+
+- `docker system prune` - clean out stopped containers, "dangling" images, "dangling" build caches, and unused networks. Note that this will require redownload of images from Docker Hub if they are needed again. Good practice to run this command whenever the user is finished with a task requiring docker Docker as containers and images take up disk space.
 
 ## Docker Compose
 
