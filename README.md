@@ -138,6 +138,15 @@ services:
 - `volumes:`
 Examples where `restarts` are important to consider are a web-server (`always` restart) vs. a process application (`on-failure` to avoid repeating the process over and over)
 - `command:` Commands to run upon `up`-ing this service. Written in an array, e.g., `["npm", "run", "test"]`.
+- `environment:` Environment variables to make available _during run time_ (not available to the image on its own).
+```yml
+...
+environment:
+	- REDIS_HOST=redis
+	- REDIS_PORT=6379
+	- ...
+```
+Note that `environment:` variables that are not set (i.e., no `=`) will attempt to be copied from the parent environment (if it exists).
 
 ### Commands
 
