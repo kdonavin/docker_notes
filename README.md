@@ -153,7 +153,7 @@ Note that `environment:` variables that are not set (i.e., no `=`) will attempt 
 - `up [--build -d]`: Create and start containers. If no compose YAML is specified, Docker compose uses `docker-compose.yml` in the current directory. Adding `--build` also (re)builds the containers specified in the compose YAML.The `d` option stands for "detached" and runs the compose services without outputing to the master terminal or entering interactive mode.
 - `down`: Stop and remove containers. If none are specified, this command acts on `services` found in the `docker-compose.yml`.
 
-## Docker Prod Workflows
+## Helper Tools for Docker Prod
 
 - **Travis CI**: testing tool to be run on a master branch of a code-base before it is integrated (automatically) with the dockerhost.
 
@@ -181,3 +181,9 @@ The `.github/workflows` directory in your repository root is where you place you
 ### AWS
 
 - The Elastic Beanstalk application is great for app development because it _automatically_ scales up VMs runnng Dockers with our container inside as request load increases.
+
+### NginX
+
+_NGINX is a versatile software platform used as a web server, reverse proxy, load balancer, and more._ Particularly useful in multi-container Docker apps as a reverse proxy and a gateway between clients and backend server containers.
+
+
