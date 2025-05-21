@@ -185,6 +185,27 @@ The `.github/workflows` directory in your repository root is where you place you
 
 ### NginX
 
-_NGINX is a versatile software platform used as a web server, reverse proxy, load balancer, and more._ Particularly useful in multi-container Docker apps as a reverse proxy and a gateway between clients and backend server containers.
+_NGINX is a versatile software platform used as a web server, reverse proxy, load balancer, and more._ Particularly useful in multi-container Docker apps as a reverse proxy and a gateway between clients and backend (i.e., "upstream") server containers.
+
+Using a `nginx/default.conf` file in an `nginx` dir of an Docker Compose app, a single gateway port may be specified:
+
+```javascript
+server {
+    listen 80;
+    ...
+}
+```
+
+As well as rules about how to access different Docker containers within:
+
+```javascript
+server {
+    ...
+    location /api/ {
+        rewrite /api/(.*) /$1 break; # Remove /api prefix
+        proxy_pass http://api; # To the 'api' service
+    }
+}
+```
 
 
