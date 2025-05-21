@@ -123,12 +123,13 @@ A separate CLI to streamline multi-container infrastructure. The tool uses speci
 
 ### Elements
 
-- `services:` type of container(s) needed. **Note**: _any_ image specified in the `services` are linked on the same network and are free to talk to each other.
+- `services:` type of container(s) needed along with `<options>` required (e.g., `volumes:`, `build:`, etc.)
 ```yaml
 services:
   nameOfService:
     ...<options>
 ```
+**Note**: _any_ image specified in the `services` are linked on the same network and are free to talk to each other. That is, they function as a sort of domain name that can be used to gain inter-access between Docker containers.
   - `build`: specify the `context:` project file location and `dockerfile:` location, or simply allow `docker-compose` to impute this from `.`
 - `restart:` Specify what to do on exit of processes running in the specific `service`. There are 4 options:
   - `"no"`: default, do not restart. Note the quotes in this case _only_ to avoid YAML interpreting `no` as a false boolean.
