@@ -17,7 +17,19 @@ services:
     #   - "6379:6379"
     # volumes:
     #   - redis_data:/data
-  server:
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    # image: nginx:latest
+    container_name: nginx
+    ports:
+      - 3050:80
+    depends_on:
+      - api
+      - client
+  api:
     build:
       context: ./server
       dockerfile: Dockerfile.dev
@@ -53,8 +65,8 @@ services:
     volumes:
       - /app/node_modules/ #prevents overwriting node_modules
       - ./client:/app
-    # environment:
-    #   - REACT_APP_API_URL=http://server:8000
+    environment:
+      - WDS_SOCKET_PORT=0 # disables webpack dev server socket
   worker:
     build:
       context: ./worker
