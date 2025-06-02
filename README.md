@@ -208,5 +208,3 @@ server {
 }
 ```
 The official Docker nginx image may be found here: [https://hub.docker.com/_/nginx](https://hub.docker.com/_/nginx)
-
-
